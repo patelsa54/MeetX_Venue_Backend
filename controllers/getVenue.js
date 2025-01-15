@@ -1,12 +1,17 @@
+const venue = require("../models/venue");
 const Venue = require("../models/venue");
+const Activity = require("../models/activity");
 
-exports.getVenue = async(req,res) => {
+
+exports.getVenueDetails = async(req,res) => {
     try {
-            const response = await Venue.find({});
+            const venueResponse = await Venue.find({});
+            const activityResponse = await Activity.find({});
+
             res.status(200)
             .json({
-                success:true,
-                data:response,
+                venue:venueResponse,
+                activity:activityResponse,
                 message:"Entire Venue Data is fetched",
             });
     }
